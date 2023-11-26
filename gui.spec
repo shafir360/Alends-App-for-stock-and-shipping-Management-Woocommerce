@@ -5,7 +5,7 @@ a = Analysis(
     ['gui.py'],
     pathex=[],
     binaries=[],
-    datas=[('C:\\Users\\Shafir R\\AppData\\Local\\Packages\\PythonSoftwareFoundation.Python.3.9_qbz5n2kfra8p0\\LocalCache\\local-packages\\Python39\\site-packages\\tkdnd\\tkdnd', '.')],
+    datas=[('C:\\Users\\Shafir R\\AppData\\Local\\Packages\\PythonSoftwareFoundation.Python.3.9_qbz5n2kfra8p0\\LocalCache\\local-packages\\Python39\\site-packages\\tkinterdnd2', 'tkinterdnd2'), ('C:\\Users\\Shafir R\\AppData\\Local\\Packages\\PythonSoftwareFoundation.Python.3.9_qbz5n2kfra8p0\\LocalCache\\local-packages\\Python39\\site-packages\\tkdnd\\tkdnd', 'tkdnd')],
     hiddenimports=[],
     hookspath=[],
     hooksconfig={},
