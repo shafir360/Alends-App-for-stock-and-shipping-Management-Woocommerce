@@ -47,9 +47,13 @@ class WooGui:
         
         
         # Drop Zone for PDF Files
-        self.pdf_drop_label = tk.Label(self.root, text="Drop PDF here for Shipping Label Update", bg="lightgrey", width=40, height=4)
+        self.pdf_drop_label = tk.Label(self.root, text="Click or drop PDF here for Shipping Label Update", bg="lightgrey", width=40, height=4)
         self.pdf_drop_label.pack(padx=10, pady=10)
         self.pdf_drop_label.drop_target_register(DND_FILES)
+        self.pdf_drop_label.dnd_bind('<<Drop>>', self.drop_pdf)
+
+        # Bind click event for the label to prompt for file selection
+        self.pdf_drop_label.bind("<Button-1>", self.prompt_pdf_selection)
         self.pdf_drop_label.dnd_bind('<<Drop>>', self.drop_pdf)
 
         # Button to Choose Save Location
@@ -313,6 +317,23 @@ class WooGui:
             self.pdf_path = self.pdf_path[8:]
         self.pdf_path = self.pdf_path.replace('/', '\\')
         messagebox.showinfo("PDF Selected", f"PDF file selected: {self.pdf_path}")
+        
+    def prompt_pdf_selection(self, event):
+        file_path = filedialog.askopenfilename(filetypes=[("PDF files", "*.pdf"), ("All files", "*.*")])
+        if file_path:
+            self.pdf_path = file_path
+            self.process_pdf()
+            #messagebox.showinfo("PDF Selected", f"PDF file selected: {self.pdf_path}")
+
+    def process_shipping_pdf_str(self):
+        
+        if self.pdf_path.startswith('{'):
+            self.pdf_path = self.pdf_path[1:-1]
+        if self.pdf_path.startswith('file:///'):
+            self.pdf_path = self.pdf_path[8:]
+        self.pdf_path = self.pdf_path.replace('/', '\\')
+        messagebox.showinfo("PDF Selected", f"PDF file selected: {self.pdf_path}")
+
 
     def choose_save_location(self):
         self.save_path = filedialog.asksaveasfilename(defaultextension=".pdf", filetypes=[("PDF files", "*.pdf"), ("All files", "*.*")])
