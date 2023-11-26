@@ -81,13 +81,13 @@ class WooGui:
         self.store_url_entry.pack(side=tk.LEFT)
 
         # Consumer Key entry
-        tk.Label(self.credential_frame, text="Consumer Key:").pack(side=tk.LEFT)
-        self.consumer_key_entry = tk.Entry(self.credential_frame)
+        tk.Label(self.credential_frame, text="Consumer Key:").pack(side=tk.LEFT,)
+        self.consumer_key_entry = tk.Entry(self.credential_frame, show="*")
         self.consumer_key_entry.pack(side=tk.LEFT)
 
         # Consumer Secret entry
         tk.Label(self.credential_frame, text="Consumer Secret:").pack(side=tk.LEFT)
-        self.consumer_secret_entry = tk.Entry(self.credential_frame)
+        self.consumer_secret_entry = tk.Entry(self.credential_frame, show="*")
         self.consumer_secret_entry.pack(side=tk.LEFT)
 
         # Buttons frame
